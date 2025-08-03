@@ -1,0 +1,16 @@
+pipeline{
+    agent{
+        docker{
+            image 'abhishekf5/maven-abhishek-docker-agent:v1'
+            args '--user root -v /var/run/docker.sock:/var/run/docker.sock' //mount docker socket to access the host dockers daemon
+        }
+    }
+
+    stages{
+        stage('Checkout'){
+            steps{
+                git branch 'https://github.com/ShashankKurremula/Jenkins-Zero-To-Hero.git'
+            }
+        }
+    }
+}
